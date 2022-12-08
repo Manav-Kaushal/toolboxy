@@ -1,12 +1,12 @@
+import { useGlobalStore } from "@store/global";
 import { sidebarOptions } from "@utils/mocks";
 import classNames from "classnames";
 import React from "react";
-import { useStore } from "../utils/store";
 
 type Props = {};
 
 const Sidebar = (props: Props) => {
-  const { view, setView } = useStore();
+  const { view, setView } = useGlobalStore();
 
   return (
     <aside className="col-span-3 p-4 rounded-md shadow-md bg-app/75 h-fit max-h-fit custom__sidebar">

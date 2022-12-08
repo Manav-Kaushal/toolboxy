@@ -12,21 +12,29 @@ export const sidebarOptions = [
   },
 ];
 
-export const CalculatorKeysData = [
-  CalculatorKeys.Seven,
-  CalculatorKeys.Eight,
-  CalculatorKeys.Nine,
-  CalculatorKeys.Divide,
-  CalculatorKeys.Four,
-  CalculatorKeys.Five,
-  CalculatorKeys.Six,
-  CalculatorKeys.Multiply,
-  CalculatorKeys.One,
-  CalculatorKeys.Two,
-  CalculatorKeys.Three,
-  CalculatorKeys.Subtract,
-  CalculatorKeys.Zero,
-  CalculatorKeys.Decimal,
-  CalculatorKeys.Add,
-  CalculatorKeys.Equals,
+// export const CalculatorKeysData = [
+//   CalculatorKeys.Seven,
+//   CalculatorKeys.Eight,
+//   CalculatorKeys.Nine,
+//   CalculatorKeys.Divide,
+//   CalculatorKeys.Four,
+//   CalculatorKeys.Five,
+//   CalculatorKeys.Six,
+//   CalculatorKeys.Multiply,
+//   CalculatorKeys.One,
+//   CalculatorKeys.Two,
+//   CalculatorKeys.Three,
+//   CalculatorKeys.Subtract,
+//   CalculatorKeys.Zero,
+//   CalculatorKeys.Decimal,
+//   CalculatorKeys.Add,
+//   CalculatorKeys.Equals,
+// ];
+
+export const CalculatorKeysValues = [
+  ["C", "+-", "%", "/"],
+  [7, 8, 9, "X"],
+  [4, 5, 6, "-"],
+  [1, 2, 3, "+"],
+  [0, ".", "="],
 ];

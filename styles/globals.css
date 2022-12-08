@@ -11,3 +11,9 @@
 .custom__container {
   @apply container px-4 mx-auto max-w-screen-2xl sm:px-6;
 }
+.calculator__btn {
+  @apply flex items-center justify-center w-full h-16 text-black bg-gray-200 rounded-md cursor-pointer active:bg-gray-300;
+}
+.calculator__btn__equals {
+  @apply flex items-center justify-center w-full h-16 col-span-2 text-white bg-red-500 rounded-md cursor-pointer active:bg-red-600;
+}

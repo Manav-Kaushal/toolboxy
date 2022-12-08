@@ -2,15 +2,15 @@ import Sidebar from "@components/Sidebar";
 import Calculator from "@components/tools/Calculator";
 import PxToRemConverter from "@components/tools/PxToRemConverter";
 import RandomNumberGenerator from "@components/tools/RandomNumberGenerator";
+import { useGlobalStore } from "@store/global";
 import { SidebarOptionMapping } from "@utils/enums";
-import { useStore } from "@utils/store";
 import Head from "next/head";
 import React from "react";
 
 type Props = {};
 
 const Page = (props: Props) => {
-  const { view } = useStore();
+  const { view } = useGlobalStore();
 
   function renderView() {
     if (view) {

@@ -28,8 +28,14 @@
       "@components/*": [
         "./src/components/*"
       ],
+      "@store/*": [
+        "./src/stores/*"
+      ],
       "@utils/*": [
         "./src/utils/*"
+      ],
+      "@helpers/*": [
+        "./src/utils/helpers/*"
       ]
     }
   },

@@ -5,7 +5,7 @@ type Props = {
   setView: any;
 };
 
-export const useStore = create<Props>((set) => ({
+export const useGlobalStore = create<Props>((set) => ({
   view: "calculator",
   setView: (view: string) => set((state) => ({ ...state, view })),
 }));
