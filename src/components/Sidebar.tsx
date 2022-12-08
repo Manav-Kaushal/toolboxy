@@ -9,7 +9,7 @@ const Sidebar = (props: Props) => {
   const { view, setView } = useStore();
 
   return (
-    <aside className="col-span-2 bg-app/75 p-4 rounded-md custom__sidebar shadow-md">
+    <aside className="col-span-3 p-4 rounded-md shadow-md bg-app/75 h-fit max-h-fit custom__sidebar">
       <ul className="space-y-1">
         {sidebarOptions.map((option, index) => (
           <li

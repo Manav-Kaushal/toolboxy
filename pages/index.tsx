@@ -1,6 +1,7 @@
 import Sidebar from "@components/Sidebar";
 import Calculator from "@components/tools/Calculator";
 import PxToRemConverter from "@components/tools/PxToRemConverter";
+import RandomNumberGenerator from "@components/tools/RandomNumberGenerator";
 import { SidebarOptionMapping } from "@utils/enums";
 import { useStore } from "@utils/store";
 import Head from "next/head";
@@ -18,9 +19,17 @@ const Page = (props: Props) => {
           return <Calculator />;
         case SidebarOptionMapping.PxToRemConverter:
           return <PxToRemConverter />;
+        case SidebarOptionMapping.RandomNumberGenerator:
+          return <RandomNumberGenerator />;
         default:
           return (
-            <code>Hi User, Please select a tool from left to get started!</code>
+            <div className="text-2xl">
+              <code>
+                Hi User, Please select a tool from the left sidebar to get
+                started!
+              </code>
+              <code className="block">Happy Tooling!</code>
+            </div>
           );
       }
     }
@@ -33,7 +42,7 @@ const Page = (props: Props) => {
       </Head>
       <div className="grid grid-cols-10 gap-16">
         <Sidebar />
-        <section className="col-span-8">{renderView()}</section>
+        <section className="col-span-7">{renderView()}</section>
       </div>
     </>
   );

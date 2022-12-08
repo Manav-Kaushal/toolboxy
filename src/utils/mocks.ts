@@ -1,4 +1,4 @@
-import { SidebarOptionMapping } from "./enums";
+import { CalculatorKeys, SidebarOptionMapping } from "./enums";
 
 export const sidebarOptions = [
   { title: "calculator", identifier: SidebarOptionMapping.Calculator },
@@ -6,4 +6,27 @@ export const sidebarOptions = [
     title: "px to rem converter",
     identifier: SidebarOptionMapping.PxToRemConverter,
   },
+  {
+    title: "random number generator",
+    identifier: SidebarOptionMapping.RandomNumberGenerator,
+  },
+];
+
+export const CalculatorKeysData = [
+  CalculatorKeys.Seven,
+  CalculatorKeys.Eight,
+  CalculatorKeys.Nine,
+  CalculatorKeys.Divide,
+  CalculatorKeys.Four,
+  CalculatorKeys.Five,
+  CalculatorKeys.Six,
+  CalculatorKeys.Multiply,
+  CalculatorKeys.One,
+  CalculatorKeys.Two,
+  CalculatorKeys.Three,
+  CalculatorKeys.Subtract,
+  CalculatorKeys.Zero,
+  CalculatorKeys.Decimal,
+  CalculatorKeys.Add,
+  CalculatorKeys.Equals,
 ];

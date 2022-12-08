@@ -9,5 +9,5 @@
 
 /* Custom Classes */
 .custom__container {
-  @apply container px-4 max-w-screen-2xl mx-auto sm:px-6;
+  @apply container px-4 mx-auto max-w-screen-2xl sm:px-6;
 }
