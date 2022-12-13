@@ -1,7 +1,7 @@
-import { useCalculatorStore } from "@store/calculator";
-import { CalculatorKeys } from "@utils/enums";
+import useCalculator from "@utils/hooks/useCalculator";
 import { CalculatorKeysValues } from "@utils/mocks";
-import React, { useEffect, useState } from "react";
+import { CalculatorTypes } from "@utils/types";
+import React, { useState } from "react";
 import Button from "./Button";
 import ButtonBox from "./ButtonBox";
 import Screen from "./Screen";
@@ -10,8 +10,14 @@ import Wrapper from "./Wrapper";
 type Props = {};
 
 const Calculator = (props: Props) => {
+  const [calc, setCalc] = useState<CalculatorTypes>({
+    sign: "",
+    num: 0,
+    res: 0,
+  });
+  const [sign, setSign] = useState("");
+
   const {
-    calc,
     numClickHandler,
     commaClickHandler,
     signClickHandler,
@@ -19,32 +25,12 @@ const Calculator = (props: Props) => {
     percentClickHandler,
     invertClickHandler,
     resetClickHandler,
-  } = useCalculatorStore();
-
-  // const handleButtonPress = (btn: string, e: any) => {
-  //   if (btn === "C") return resetClickHandler();
-  //   if (btn === "+-") return invertClickHandler();
-  //   if (btn === "%") return percentClickHandler();
-  //   if (btn === "=") return equalsClickHandler();
-  //   if (btn === "/" || btn === "X" || btn === "-" || btn === "+")
-  //     return signClickHandler(e);
-  //   if (btn === ".") return commaClickHandler(e);
-  //   return numClickHandler(e);
-  // };
+  } = useCalculator({ calc, setCalc });
 
   return (
     <Wrapper>
-      <Screen value={calc.num ? calc.num : calc.res} />
+      <Screen value={calc.num ? +calc.num : +calc.res} sign={sign} />
       <ButtonBox>
-        {/* {CalculatorKeysData.map((button, index) => (
-          <li
-            key={index}
-            onClick={() => handleButtonPress(button)}
-            className="flex items-center justify-center w-full h-16 text-black bg-gray-200 rounded-md cursor-pointer active:bg-gray-300"
-          >
-            <code className="text-2xl font-semibold">{button}</code>
-          </li>
-        ))} */}
         {CalculatorKeysValues.flat().map((btn: any, i: number) => {
           return (
             <Button
