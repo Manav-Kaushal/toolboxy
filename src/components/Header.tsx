@@ -9,7 +9,7 @@ const Header = (props: Props) => {
       <div className="custom__container">
         <div className="">
           <Image
-            src="https://res.cloudinary.com/manavkaushal/image/upload/v1670447328/Projects/toolboxy/toolboxy_logo_bdp6yf.gif"
+            src="https://res.cloudinary.com/manavkaushal/image/upload/v1671023007/Projects/toolboxy/yellow_logo_250_100_ctgopo.gif"
             alt="toolboxy logo"
             width={150}
             height={60}
