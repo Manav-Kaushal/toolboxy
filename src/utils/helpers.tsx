@@ -3,4 +3,9 @@ const toLocaleString = (num: number) =>
 
 const removeSpaces = (num: number) => num.toString().replace(/\s/g, "");
 
-export { toLocaleString, removeSpaces };
+const formatNumber = (number: number, type?: string) => {
+  const formatLocale = Intl.NumberFormat("en-US");
+  return formatLocale.format(number);
+};
+
+export { toLocaleString, removeSpaces, formatNumber };

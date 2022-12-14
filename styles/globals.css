@@ -27,3 +27,6 @@ input[type="number"] {
 .calculator__btn__equals {
   @apply flex items-center justify-center w-full h-16 col-span-2 text-white bg-red-500 rounded-md cursor-pointer active:bg-red-600;
 }
+.btn {
+  @apply inline-flex items-center rounded-md border bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-100 focus:outline-none transition-200;
+}

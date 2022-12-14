@@ -1,19 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
-import { PencilIcon } from "@heroicons/react/24/outline";
+import { ArrowsRightLeftIcon, PencilIcon } from "@heroicons/react/24/outline";
+import { formatNumber } from "@utils/helpers";
 
 type Props = {};
+
+const initialState = {
+  pxValue: "16",
+  remValue: "1",
+  baseValue: "16",
+};
 
 const PxToRemConverter = (props: Props) => {
   const span = useRef() as React.MutableRefObject<HTMLInputElement>;
   const [state, setState] = useState<{
-    pxValue: number;
-    remValue: number;
-    baseValue: number;
-  }>({
-    pxValue: 0,
-    remValue: 0,
-    baseValue: 16,
-  });
+    pxValue: string;
+    remValue: string;
+    baseValue: string;
+  }>(initialState);
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
@@ -21,12 +24,64 @@ const PxToRemConverter = (props: Props) => {
   }, [state.baseValue]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setState({ ...state, [e.target.name]: e.target.value });
+    if (e.target.name === "pxValue") {
+      setState({
+        ...state,
+        [e.target.name]: e.target.value,
+        remValue: (+e.target.value / +state.baseValue).toString(),
+      });
+    }
+    if (e.target.name === "remValue") {
+      setState({
+        ...state,
+        [e.target.name]: e.target.value,
+        pxValue: (+e.target.value * +state.baseValue).toString(),
+      });
+    }
   };
 
+  useEffect(() => {
+    if (state.baseValue !== "0") {
+      setState((prevState) => ({
+        ...prevState,
+        pxValue: state.baseValue,
+        // remValue: (+state.pxValue / +state.baseValue).toString(),
+      }));
+    }
+  }, [state.baseValue]);
+
   return (
-    <div>
-      <div className="flex items-center space-x-2 select-none">
+    <>
+      <form className="space-x-10 flex items-center">
+        <div className="flex flex-col items-start justify-center">
+          <label htmlFor="pxValue" className="pb-1 text-2xl">
+            Pixels
+          </label>
+          <input
+            type="number"
+            name="pxValue"
+            value={state.pxValue}
+            onChange={handleChange}
+            className="p-3 bg-app rounded-md font-bold focus:outline-none focus:ring-2 focus:shadow-xl shadow-md text-lg transition-200 focus:ring-app"
+          />
+        </div>
+        <div>
+          <ArrowsRightLeftIcon className="w-10 h-10" />
+        </div>
+        <div className="flex flex-col items-start justify-center">
+          <label htmlFor="pxValue" className="pb-1 text-2xl">
+            REM
+          </label>
+          <input
+            type="number"
+            name="remValue"
+            value={state.remValue}
+            onChange={handleChange}
+            className="p-3 bg-app rounded-md font-bold focus:outline-none focus:ring-2 focus:shadow-xl shadow-md text-lg transition-200 focus:ring-app"
+          />
+        </div>
+      </form>
+      <div className="mt-16 text-white font-semibold flex items-center space-x-2 select-none">
         <p>Calculation based on a root font-size of</p>
         <div className="flex items-center">
           <span
@@ -35,18 +90,17 @@ const PxToRemConverter = (props: Props) => {
           >
             {state.baseValue}
           </span>
-
           <input
             type="number"
             name="baseValue"
             value={state.baseValue}
             onChange={(e) => {
               if (+e.target.value <= 0) {
-                setState({ ...state, baseValue: 1 });
+                setState({ ...state, baseValue: "1" });
               } else {
                 setState({
                   ...state,
-                  baseValue: +e.target.value,
+                  baseValue: e.target.value,
                 });
               }
             }}
@@ -54,16 +108,18 @@ const PxToRemConverter = (props: Props) => {
             className={`bg-transparent min-w-[1px] p-0`}
           />
         </div>
-        <p>pixel{!!state.baseValue && state.baseValue > 0 && "s"}.</p>
+        <p>pixel{!!state.baseValue && state.baseValue > "0" && "s"}.</p>
       </div>
-      <input
-        type="number"
-        name="pxValue"
-        value={state.pxValue}
-        onChange={handleChange}
-        className="py-4 text-black"
-      />
-    </div>
+      <div className="mt-4">
+        <button
+          type="reset"
+          className="btn"
+          onClick={() => setState(initialState)}
+        >
+          Reset
+        </button>
+      </div>
+    </>
   );
 };
 
