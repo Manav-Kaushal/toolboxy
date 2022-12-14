@@ -1,7 +1,7 @@
 export enum SidebarOptionMapping {
-  Calculator = "calc",
-  PxToRemConverter = "pxtorem",
-  RandomNumberGenerator = 'rand',
+  Calculator = "calculator",
+  PxToRemConverter = "px-to-rem",
+  RandomNumberGenerator = "random-number",
 }
 
 export enum CalculatorKeys {

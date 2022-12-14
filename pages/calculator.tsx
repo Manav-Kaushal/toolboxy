@@ -1,11 +1,12 @@
+import Layout from "@components/Layout";
 import useCalculator from "@utils/hooks/useCalculator";
 import { CalculatorKeysValues } from "@utils/mocks";
 import { CalculatorTypes } from "@utils/types";
-import React, { useState } from "react";
-import Button from "./Button";
-import ButtonBox from "./ButtonBox";
-import Screen from "./Screen";
-import Wrapper from "./Wrapper";
+import React, { ReactElement, useState } from "react";
+import Button from "../src/components/tools/Calculator/Button";
+import ButtonBox from "../src/components/tools/Calculator/ButtonBox";
+import Screen from "../src/components/tools/Calculator/Screen";
+import Wrapper from "../src/components/tools/Calculator/Wrapper";
 
 type Props = {};
 
@@ -60,6 +61,10 @@ const Calculator = (props: Props) => {
       </ButtonBox>
     </Wrapper>
   );
+};
+
+Calculator.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
 export default Calculator;
