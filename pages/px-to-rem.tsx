@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowsRightLeftIcon, PencilIcon } from "@heroicons/react/24/outline";
 import { formatNumber } from "@utils/helpers";
+import { NextSeo } from "next-seo";
+import { page } from "@utils/config";
 
 type Props = {};
 
@@ -52,6 +54,7 @@ const PxToRemConverter = (props: Props) => {
 
   return (
     <>
+      <NextSeo title={`${page.displayName} | Px To Rem Converter`} />
       <form className="space-x-10 flex items-center">
         <div className="flex flex-col items-start justify-center">
           <label htmlFor="pxValue" className="pb-1 text-2xl">

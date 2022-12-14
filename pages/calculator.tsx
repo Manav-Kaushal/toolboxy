@@ -1,8 +1,9 @@
-import Layout from "@components/Layout";
+import { page } from "@utils/config";
 import useCalculator from "@utils/hooks/useCalculator";
 import { CalculatorKeysValues } from "@utils/mocks";
 import { CalculatorTypes } from "@utils/types";
-import React, { ReactElement, useState } from "react";
+import { NextSeo } from "next-seo";
+import React, { useState } from "react";
 import Button from "../src/components/tools/Calculator/Button";
 import ButtonBox from "../src/components/tools/Calculator/ButtonBox";
 import Screen from "../src/components/tools/Calculator/Screen";
@@ -16,7 +17,6 @@ const Calculator = (props: Props) => {
     num: 0,
     res: 0,
   });
-  const [sign, setSign] = useState("");
 
   const {
     numClickHandler,
@@ -29,42 +29,41 @@ const Calculator = (props: Props) => {
   } = useCalculator({ calc, setCalc });
 
   return (
-    <Wrapper>
-      <Screen value={calc.num ? +calc.num : +calc.res} sign={sign} />
-      <ButtonBox>
-        {CalculatorKeysValues.flat().map((btn: any, i: number) => {
-          return (
-            <Button
-              key={i}
-              className={
-                btn === "=" ? "calculator__btn__equals" : "calculator__btn"
-              }
-              value={btn}
-              onClick={
-                btn === "C"
-                  ? resetClickHandler
-                  : btn === "+-"
-                  ? invertClickHandler
-                  : btn === "%"
-                  ? percentClickHandler
-                  : btn === "="
-                  ? equalsClickHandler
-                  : btn === "/" || btn === "X" || btn === "-" || btn === "+"
-                  ? signClickHandler
-                  : btn === "."
-                  ? commaClickHandler
-                  : numClickHandler
-              }
-            />
-          );
-        })}
-      </ButtonBox>
-    </Wrapper>
+    <>
+      <NextSeo title={`${page.displayName} | Calculator`} />
+      <Wrapper>
+        <Screen value={calc.num ? +calc.num : +calc.res} />
+        <ButtonBox>
+          {CalculatorKeysValues.flat().map((btn: any, i: number) => {
+            return (
+              <Button
+                key={i}
+                className={
+                  btn === "=" ? "calculator__btn__equals" : "calculator__btn"
+                }
+                value={btn}
+                onClick={
+                  btn === "C"
+                    ? resetClickHandler
+                    : btn === "+-"
+                    ? invertClickHandler
+                    : btn === "%"
+                    ? percentClickHandler
+                    : btn === "="
+                    ? equalsClickHandler
+                    : btn === "/" || btn === "X" || btn === "-" || btn === "+"
+                    ? signClickHandler
+                    : btn === "."
+                    ? commaClickHandler
+                    : numClickHandler
+                }
+              />
+            );
+          })}
+        </ButtonBox>
+      </Wrapper>
+    </>
   );
-};
-
-Calculator.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>;
 };
 
 export default Calculator;

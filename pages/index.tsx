@@ -1,4 +1,5 @@
-import Head from "next/head";
+import { page } from "@utils/config";
+import { NextSeo } from "next-seo";
 import React from "react";
 
 type Props = {};
@@ -6,9 +7,7 @@ type Props = {};
 const Home = (props: Props) => {
   return (
     <>
-      <Head>
-        <title>ToolBoxy | Best Tools For Frontend Devs</title>
-      </Head>
+      <NextSeo title={`${page.displayName} | Best Tools For Frontend Devs`} />
       <div className="text-2xl">
         <code>
           Hi User, Please select a tool from the left sidebar to get started!
